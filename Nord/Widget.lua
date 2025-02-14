@@ -498,6 +498,12 @@ local library = {
 	},
 	gui_parent = (function()
 		local x, c = pcall(function()
+			return gethui()
+		end)
+		if x and c then
+			return c
+		end
+		local x, c = pcall(function()
 			return game:GetService("CoreGui")
 		end)
 		if x and c then
