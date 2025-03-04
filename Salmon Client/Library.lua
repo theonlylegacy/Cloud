@@ -987,3 +987,5 @@ function library.new(name)
 	end
 	return UI
 end
+
+return library
