@@ -882,7 +882,7 @@ function library.new(name)
 					function Object:Update(list)
 						for i, v in DropdownObjects:GetChildren() do
 							if not table.find(list, v.Name) then
-								Button:Destroy()
+								v:Destroy()
 							end
 						end
 
