@@ -880,6 +880,12 @@ function library.new(name)
 					DropdownText.Text = name
 
 					function Object:Update(list)
+						for i, v in DropdownObjects:GetChildren() do
+							if not table.find(list, v.Name) then
+								Button:Destroy()
+							end
+						end
+
 						for _,v in pairs(list) do
 							local Button = Instance.new("TextButton")
 							Button.Name = "Button"
