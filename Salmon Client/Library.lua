@@ -793,7 +793,7 @@ function library.new(name)
 					SectionUI:Resize()
 				end
 				function SectionUI.Dropdown(name,list,callback)
-					local Dropdown = {}
+					local Object = {}
 
 					local DropFrame = Instance.new("Frame")
 					local Dropdown = Instance.new("Frame")
@@ -879,7 +879,7 @@ function library.new(name)
 						
 					DropdownText.Text = name
 
-					function Dropdown:Update(list)
+					function Object:Update(list)
 						for _,v in pairs(list) do
 							local Button = Instance.new("TextButton")
 							Button.Name = "Button"
@@ -906,8 +906,8 @@ function library.new(name)
 						end
 					end
 
-					Dropdown:Update(list)
-					
+					Object:Update(list)
+
 					ToggleButton.MouseButton1Click:Connect(function()
 						Toggled = not Toggled
 						local TotalY = 0;
@@ -924,7 +924,7 @@ function library.new(name)
 						game:GetService("TweenService"):Create(ToggleButton,tweenInfo,{Rotation = RotationAmount}):Play()
 					end)
 					SectionUI:Resize()
-					return Dropdown
+					return Object
 				end
 
 				function SectionUI.Box(name,callback)
