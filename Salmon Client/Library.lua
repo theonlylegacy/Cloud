@@ -887,28 +887,30 @@ function library.new(name)
 						end
 
 						for _,v in pairs(list) do
-							local Button = Instance.new("TextButton")
-							Button.Name = "Button"
-							Button.Parent = DropdownObjects
-							Button.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-							Button.BorderColor3 = Color3.fromRGB(44, 44, 44)
-							Button.BorderSizePixel = 2
-							Button.Text = v
-							Button.ZIndex = 5
-							Button.Position = UDim2.new(0.269, 0, 1, 0)
-							Button.Size = UDim2.new(0, 430, 0, 30)
-							Button.AutoButtonColor = false
-							Button.Font = Enum.Font.SourceSans
-							Button.TextColor3 = Color3.fromRGB(148, 148, 148)
-							Button.TextSize = 20.000
-									
-							Button.MouseButton1Click:Connect(function()
-								callback(Button.Text)
-								DropdownText.Text = v
-								Toggled = false
-								DropdownObjects:TweenSize(UDim2.new(0, 432,0, 30),"In","Linear",.25,true)
-								game:GetService("TweenService"):Create(ToggleButton,tweenInfo,{Rotation = 90}):Play()
-							end)
+							if not DropdownObjects:FindFirstChild(v) then
+								local Button = Instance.new("TextButton")
+								Button.Name = "Button"
+								Button.Parent = DropdownObjects
+								Button.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+								Button.BorderColor3 = Color3.fromRGB(44, 44, 44)
+								Button.BorderSizePixel = 2
+								Button.Text = v
+								Button.ZIndex = 5
+								Button.Position = UDim2.new(0.269, 0, 1, 0)
+								Button.Size = UDim2.new(0, 430, 0, 30)
+								Button.AutoButtonColor = false
+								Button.Font = Enum.Font.SourceSans
+								Button.TextColor3 = Color3.fromRGB(148, 148, 148)
+								Button.TextSize = 20.000
+										
+								Button.MouseButton1Click:Connect(function()
+									callback(Button.Text)
+									DropdownText.Text = v
+									Toggled = false
+									DropdownObjects:TweenSize(UDim2.new(0, 432,0, 30),"In","Linear",.25,true)
+									game:GetService("TweenService"):Create(ToggleButton,tweenInfo,{Rotation = 90}):Play()
+								end)
+							end
 						end
 					end
 
