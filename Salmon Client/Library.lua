@@ -793,6 +793,8 @@ function library.new(name)
 					SectionUI:Resize()
 				end
 				function SectionUI.Dropdown(name,list,callback)
+					local Dropdown = {}
+
 					local DropFrame = Instance.new("Frame")
 					local Dropdown = Instance.new("Frame")
 					local DropdownText = Instance.new("TextLabel")
@@ -876,31 +878,36 @@ function library.new(name)
 					local tweenInfo = TweenInfo.new(.15,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut,0,false,0)
 						
 					DropdownText.Text = name
-					for _,v in pairs(list) do
-						local Button = Instance.new("TextButton")
-						Button.Name = "Button"
-						Button.Parent = DropdownObjects
-						Button.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-						Button.BorderColor3 = Color3.fromRGB(44, 44, 44)
-						Button.BorderSizePixel = 2
-						Button.Text = v
-						Button.ZIndex = 5
-						Button.Position = UDim2.new(0.269, 0, 1, 0)
-						Button.Size = UDim2.new(0, 430, 0, 30)
-						Button.AutoButtonColor = false
-						Button.Font = Enum.Font.SourceSans
-						Button.TextColor3 = Color3.fromRGB(148, 148, 148)
-						Button.TextSize = 20.000
-								
-						Button.MouseButton1Click:Connect(function()
-							callback(Button.Text)
-							DropdownText.Text = v
-							Toggled = false
-							DropdownObjects:TweenSize(UDim2.new(0, 432,0, 30),"In","Linear",.25,true)
-							game:GetService("TweenService"):Create(ToggleButton,tweenInfo,{Rotation = 90}):Play()
-						end)
+
+					function Dropdown:Update(list)
+						for _,v in pairs(list) do
+							local Button = Instance.new("TextButton")
+							Button.Name = "Button"
+							Button.Parent = DropdownObjects
+							Button.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+							Button.BorderColor3 = Color3.fromRGB(44, 44, 44)
+							Button.BorderSizePixel = 2
+							Button.Text = v
+							Button.ZIndex = 5
+							Button.Position = UDim2.new(0.269, 0, 1, 0)
+							Button.Size = UDim2.new(0, 430, 0, 30)
+							Button.AutoButtonColor = false
+							Button.Font = Enum.Font.SourceSans
+							Button.TextColor3 = Color3.fromRGB(148, 148, 148)
+							Button.TextSize = 20.000
+									
+							Button.MouseButton1Click:Connect(function()
+								callback(Button.Text)
+								DropdownText.Text = v
+								Toggled = false
+								DropdownObjects:TweenSize(UDim2.new(0, 432,0, 30),"In","Linear",.25,true)
+								game:GetService("TweenService"):Create(ToggleButton,tweenInfo,{Rotation = 90}):Play()
+							end)
+						end
 					end
-						
+
+					Dropdown:Update(list)
+					
 					ToggleButton.MouseButton1Click:Connect(function()
 						Toggled = not Toggled
 						local TotalY = 0;
@@ -917,6 +924,7 @@ function library.new(name)
 						game:GetService("TweenService"):Create(ToggleButton,tweenInfo,{Rotation = RotationAmount}):Play()
 					end)
 					SectionUI:Resize()
+					return Dropdown
 				end
 
 				function SectionUI.Box(name,callback)
