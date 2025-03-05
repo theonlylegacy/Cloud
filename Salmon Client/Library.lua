@@ -881,7 +881,7 @@ function library.new(name)
 
 					function Object:Update(list)
 						for i, v in DropdownObjects:GetChildren() do
-							if not table.find(list, v.Name) then
+							if v:IsA("TextButton") and not table.find(list, v.Name) then
 								v:Destroy()
 							end
 						end
@@ -889,7 +889,7 @@ function library.new(name)
 						for _,v in pairs(list) do
 							if not DropdownObjects:FindFirstChild(v) then
 								local Button = Instance.new("TextButton")
-								Button.Name = "Button"
+								Button.Name = v
 								Button.Parent = DropdownObjects
 								Button.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 								Button.BorderColor3 = Color3.fromRGB(44, 44, 44)
@@ -1004,4 +1004,4 @@ function library.new(name)
 	return UI
 end
 
-return library
+getgenv().Library = library
