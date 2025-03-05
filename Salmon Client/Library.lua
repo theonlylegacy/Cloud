@@ -1004,4 +1004,4 @@ function library.new(name)
 	return UI
 end
 
-getgenv().Library = library
+return library
