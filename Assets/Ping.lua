@@ -1,7 +1,19 @@
 --[=[
+local Ping = loadstring(http.request({Url = "https://raw.githubusercontent.com/theonlylegacy/Cloud/refs/heads/main/Assets/Ping.lua", Method = "GET"}).Body)(function()
+    local Stats = game:GetService("Stats")
+    local Ping = Stats.Network.ServerStatsItem["Data Ping"]:GetValue()
 
+    print("Ping has stabilized at:", Ping)
+    
+    if Ping > 110 then
+        print("High ping detected, cheat might not run as expected")
+    end
+end)
 ]=]
 
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
 
 local Stats = game:GetService("Stats")
 local Callback = select(1, ...)
@@ -17,7 +29,7 @@ local GetPing = function()
     return math.huge
 end
 
-if Callback then
+if typeof(Callback) == "function" then
     task.spawn(function()
 
         local StableTime = 0
