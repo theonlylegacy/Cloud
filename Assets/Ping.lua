@@ -1,5 +1,5 @@
 --[=[
-local Ping = loadstring(http.request({Url = "https://raw.githubusercontent.com/theonlylegacy/Cloud/refs/heads/main/Assets/Ping.lua", Method = "GET"}).Body)(function()
+loadstring(http.request({Url = "https://raw.githubusercontent.com/theonlylegacy/Cloud/refs/heads/main/Assets/Ping.lua", Method = "GET"}).Body)(function()
     local Stats = game:GetService("Stats")
     local Ping = Stats.Network.ServerStatsItem["Data Ping"]:GetValue()
 
