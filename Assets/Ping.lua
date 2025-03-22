@@ -1,8 +1,5 @@
 --[=[
-loadstring(http.request({Url = "https://raw.githubusercontent.com/theonlylegacy/Cloud/refs/heads/main/Assets/Ping.lua", Method = "GET"}).Body)(function()
-    local Stats = game:GetService("Stats")
-    local Ping = Stats.Network.ServerStatsItem["Data Ping"]:GetValue()
-
+loadstring(http.request({Url = "https://raw.githubusercontent.com/theonlylegacy/Cloud/refs/heads/main/Assets/Ping.lua", Method = "GET"}).Body)(function(Ping)
     print("Ping has stabilized at:", Ping)
     
     if Ping > 110 then
@@ -47,6 +44,6 @@ if typeof(Callback) == "function" then
             LastPing = Ping
         end
 
-        Callback()
+        Callback(LastPing)
     end)
 end
