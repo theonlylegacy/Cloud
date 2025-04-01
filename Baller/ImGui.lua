@@ -89,6 +89,7 @@ ReGui.Icons = {
 	Premium = "rbxassetid://6487178625",
 	Friend = "rbxassetid://10885655986",
 	User = "rbxassetid://18854794412",
+	Crosshair = "rbxassetid://139650104834071",
 	Duplicate = "rbxassetid://11833749507",
 	ChatBox = "rbxassetid://15839118471",
 	ChatBox2 = "rbxassetid://15839116089",
