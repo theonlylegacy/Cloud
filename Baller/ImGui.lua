@@ -894,6 +894,10 @@ function Animation:Tween(Data: AnimationTween): Tween?
 			return TweenService:Create(Object, Tweeninfo, Properties)
 		end)
 
+        if typeof(Tween) == "string" then --// This is a very rare occurance, but it can happen when hooking __namecall
+            Success = false
+        end
+
 		--// Set Properties instead of tweening
 		if not Success then
 			ReGui:SetProperties(Object, Properties)
