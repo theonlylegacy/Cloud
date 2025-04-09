@@ -52,6 +52,7 @@ local ReGui = {
 }
 
 ReGui.Icons = {
+	Crosshair = "rbxassetid://139650104834071",
 	Dot = "rbxasset://textures/whiteCircle.png",
 	Arrow = "rbxassetid://4731371527",
 	Close = "rbxasset://textures/AnimationEditor/icon_close.png",
