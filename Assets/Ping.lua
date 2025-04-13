@@ -28,7 +28,6 @@ end
 
 if typeof(Callback) == "function" then
     task.spawn(function()
-
         local StableTime = 0
         local LastPing = GetPing()
 
