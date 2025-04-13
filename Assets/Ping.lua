@@ -8,11 +8,11 @@ loadstring(http.request({Url = "https://raw.githubusercontent.com/theonlylegacy/
 end)
 ]=]
 
-if not game:IsLoaded() then
-    game.Loaded:Wait()
+if not Game:IsLoaded() then
+    Game.Loaded:Wait()
 end
 
-local Stats = game:GetService("Stats")
+local Stats = Game:GetService("Stats")
 local Callback = select(1, ...)
 
 local GetPing = function()
