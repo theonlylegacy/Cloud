@@ -66,6 +66,7 @@ ReGui.Icons = {
 	Warning = "rbxassetid://11745872910",
 	Audio = "rbxassetid://302250236",
 	Shop = "rbxassetid://6473525198",
+	Cart = "rbxassetid://6034684933",
 	CharacterDance = "rbxassetid://11932783331",
 	Pants = "rbxassetid://10098755331",
 	Home = "rbxassetid://4034483344",
