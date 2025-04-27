@@ -966,10 +966,12 @@ function Animation:Init(Character)
         playAnimation("idle", 0.1, u2)
         local _ = "Standing"
     end
-    while u1.Parent ~= nil do
-        local _, v137 = wait(0.1)
-        stepAnimate(v137)
-    end
+    task.spawn(function()
+        while u1.Parent ~= nil do
+            local _, v137 = wait(0.1)
+            stepAnimate(v137)
+        end
+    end)
 end
 
 return Animation
