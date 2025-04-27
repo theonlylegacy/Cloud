@@ -5,7 +5,11 @@ Roblox's Animations Script Initiator
 local Animation = {}
 
 function Animation:Init(Character)
-    local script = Character
+    local script = Character:FindFirstChild("Animate") or nil
+
+    if not script then
+        return
+    end
 
     local u1 = script.Parent
     local u2 = u1:WaitForChild("Humanoid")
