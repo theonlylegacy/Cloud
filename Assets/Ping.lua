@@ -1,13 +1,3 @@
---[=[
-loadstring(http.request({Url = "https://raw.githubusercontent.com/theonlylegacy/Cloud/refs/heads/main/Assets/Ping.lua", Method = "GET"}).Body)(function(Ping)
-    print("Ping has stabilized at:", Ping)
-    
-    if Ping > 110 then
-        print("High ping detected, cheat might not run as expected")
-    end
-end)
-]=]
-
 if not Game:IsLoaded() then
     Game.Loaded:Wait()
 end
