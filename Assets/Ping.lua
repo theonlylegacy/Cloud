@@ -12,10 +12,10 @@ if not Game:IsLoaded() then
     Game.Loaded:Wait()
 end
 
+local Ping = {}
 local Stats = Game:GetService("Stats")
-local Callback = select(1, ...)
 
-local GetPing = function()
+function Ping:Get()
     local ServerStatsItem = Stats.Network.ServerStatsItem
     local DataPing = ServerStatsItem and ServerStatsItem:FindFirstChild("Data Ping")
 
@@ -26,13 +26,15 @@ local GetPing = function()
     return math.huge
 end
 
-if typeof(Callback) == "function" then
+function Ping:Connect(Callback)
+    assert(typeof(Callback) == "function", "array #1 expects a function")
+
     task.spawn(function()
         local StableTime = 0
         local LastPing = GetPing()
 
         while StableTime < 5 and task.wait(0.5) do
-            local Ping = GetPing()
+            local Ping = Ping:Get()
 
             if math.abs(Ping - LastPing) <= 10 then
                 StableTime += 0.5
@@ -46,3 +48,5 @@ if typeof(Callback) == "function" then
         Callback(LastPing)
     end)
 end
+
+return Ping
