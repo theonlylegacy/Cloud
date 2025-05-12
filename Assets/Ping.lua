@@ -21,7 +21,7 @@ function Ping:Connect(Callback)
 
     task.spawn(function()
         local StableTime = 0
-        local LastPing = GetPing()
+        local LastPing = Ping:Get()
 
         while StableTime < 5 and task.wait(0.5) do
             local Ping = Ping:Get()
