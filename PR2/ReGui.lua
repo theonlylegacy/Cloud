@@ -2459,7 +2459,7 @@ function ReGui:WrapGeneration(Function, Data: WrapGeneration)
 
 		--// Check for errors
 		if Success == false then
-			if ErrorCache[Parent] then return end
+			if not Parent or ErrorCache[Parent] then return end
 			ErrorCache[Parent] = Class
 			
 			--// Create visual error message
