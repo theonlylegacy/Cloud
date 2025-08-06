@@ -2459,8 +2459,10 @@ function ReGui:WrapGeneration(Function, Data: WrapGeneration)
 
 		--// Check for errors
 		if Success == false then
-			if not Parent or ErrorCache[Parent] then return end
-			ErrorCache[Parent] = Class
+			if Parent then
+				if ErrorCache[Parent] then return end
+				ErrorCache[Parent] = Class
+			end
 			
 			--// Create visual error message
 			if Canvas.Error then
