@@ -145,7 +145,15 @@ function Library:Create(Class, Properties)
     end
 
     for Property, Value in next, Properties do
+        if Property == "Parent" then
+            continue
+        end
+
         _Instance[Property] = Value
+    end
+
+    if Properties["Parent"] then -- might be the fix to a rare crash
+        _Instance["Parent"] = Properties["Parent"]
     end
 
     return _Instance
